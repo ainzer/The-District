@@ -1,5 +1,6 @@
 .bg-custom-color {
     background-color: #970747 !important;
+    border: 3px solid #FEF4E8 !important;
 }
 .logo {
     width: 125px !important;
@@ -9,12 +10,6 @@
 .color-title {
     color: #FEF4E8 !important;
 }
-
-.no-hover-color-change:hover {
-    background-color: transparent !important;
-    /* Cette règle annule la couleur de fond au survol */
-}
-
 .color-heading {
     color: #FEF4E8 !important;
     border-radius: 0 15px !important; 
@@ -22,26 +17,48 @@
 .navbar-nav .nav-item.active .nav-link {
     color: #970747 !important;
     background-color: #FEF4E8 !important;
-    border: 3px solid black;
+    border: 3px solid #1a1a1a !important;
     border-radius: 0 15px !important;
 }
 .color-btn {
     color: transparent !important;
     background-color: #FEF4E8 !important;
-    border-color: black !important;
+    border-color: #1a1a1a !important;
     border-radius: 0 15px !important;
     border-width: 3px !important;
 }
 .color-search {
     background-color: #FEF4E8 !important;
     color: #970747 !important;
-    border-color: black !important;
+    border-color: #1a1a1a !important;
     border-width: 3px !important;
     border-radius: 0 15px !important;
 }
 .mod-search {
     background-color: #FEF4E8 !important;
-    border-color: black !important;
+    border-color: #1a1a1a !important;
     border-width: 3px !important;
     border-radius: 15px !important;
+}
+.navbar-nav {
+    margin: auto !important; 
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+.foot {
+    width: 1200px !important;
+    background-color: #970747 !important;
+    border-radius: 15px !important;
+    border: 3px solid !important;
+    border-color: #FEF4E8 !important;
+}
+.mod-rs {
+    color: #FEF4E8 !important;
+    font-size: 60px !important;
+}
+ /* Styles pour le thème sombre */
+ body.dark-theme {
+    background-color: #1a1a1a !important;
+    color: #FEF4E8 !important;
 }
