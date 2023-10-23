@@ -1,11 +1,6 @@
 .bg-custom-color {
     background-color: #970747 !important;
 }
-
-.custom-rounded {
-    border-radius: 25px !important;
-}
-
 .logo {
     width: 125px !important;
     border-radius: 25px !important;
@@ -27,6 +22,7 @@
 .navbar-nav .nav-item.active .nav-link {
     color: #970747 !important;
     background-color: #FEF4E8 !important;
+    border: 3px solid black;
     border-radius: 0 15px !important;
 }
 .color-btn {
