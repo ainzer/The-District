@@ -61,24 +61,8 @@
 .col-btn:hover {
     color: #FEF4E8 !important;
 }
- /* Styles pour le thème clair */
- body.light-theme {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-}
-
-/* Styles pour le thème sombre */
-body.dark-theme {
-    background-color: #1a1a1a !important;
-    color: #ffffff !important;
-}
-/* Sélecteur pour le menu déroulant */
-.dropdown select {
-    background-color: #970747 !important; /* Remplacez "yourColor" par la couleur que vous souhaitez */
-    color: #FEF4E8 !important; /* Remplacez "yourTextColor" par la couleur du texte que vous souhaitez */
-    border-color: #FEF4E8 !important;
-    box-shadow: none !important;
-    background-image: none !important;
+body {
+    background-color: #970747 !important;
 }
 
 
