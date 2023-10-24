@@ -1,14 +1,10 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
+// Script pour basculer entre les thèmes
+function toggleTheme(theme) {
     const body = document.body;
-    const themeStyleLink = document.getElementById('theme-style');
 
-    themeToggleBtn.addEventListener('click', function () {
-        body.classList.toggle('dark-theme');
+    // Retirer les classes de thème existantes
+    body.classList.remove('light-theme', 'dark-theme');
 
-        // Basculer entre les feuilles de style en fonction du thème
-        const currentTheme = body.classList.contains('dark-theme') ? 'style-dark.css' : 'style-light.css';
-        
-        themeStyleLink.setAttribute('href', currentTheme);
-    });
-});
+    // Ajouter la classe du nouveau thème
+    body.classList.add(`${theme}-theme`);
+}
