@@ -49,6 +49,96 @@
             </div>
         </nav>
     </header>
+    <div class="container-fluid mt-2 mod-video">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Ajout d'une div pour la vidéo -->
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="URL_DE_TA_VIDEO" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nouveau conteneur avec une grille de 3x3 -->
+        <div class="container-fluid mt-3 row">
+            <div class="col-md-4 d-flex justify-content-end mb-4">
+                <div class="card zoom-image">
+                    <img src="../image/category/burger_cat.jpg" class="card-img-top card-img" alt="Image de la carte">
+                    <div class="card-body">
+                        <h5 class="card-title">Burger</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center mb-4">
+                <div class="card zoom-image">
+                    <img src="../image/category/pizza_cat.jpg" class="card-img-top card-img" alt="Image de la carte">
+                    <div class="card-body">
+                        <h5 class="card-title">Pizza</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-start mb-4">
+                <div class="card zoom-image">
+                    <img src="../image/category/asian_food_cat.jpg" class="card-img-top card-img"
+                        alt="Image de la carte">
+                    <div class="card-body">
+                        <h5 class="card-title">Asian</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-end mb-4">
+                <div class="card zoom-image">
+                    <img src="../image/category/pasta_cat.jpg" class="card-img-top card-img" alt="Image de la carte">
+                    <div class="card-body">
+                        <h5 class="card-title">Pasta</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center mb-4">
+                <div class="card zoom-image">
+                    <img src="../image/category/salade_cat.jpg" class="card-img-top card-img" alt="Image de la carte">
+                    <div class="card-body">
+                        <h5 class="card-title">Salade</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-start mb-4">
+                <div class="card zoom-image">
+                    <img src="../image/category/wrap_cat.jpg" class="card-img-top card-img" alt="Image de la carte">
+                    <div class="card-body">
+                        <h5 class="card-title">Wrap</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-end mb-4">
+                <div class="card zoom-image">
+                    <img src="../image/food/cheesburger.jpg" class="card-img-top card-img" alt="Image de la carte">
+                    <div class="card-body">
+                        <h5 class="card-title">CheesBurger</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center mb-4">
+                <div class="card zoom-image">
+                    <img src="../image/food/cesar_salad.jpg" class="card-img-top card-img" alt="Image de la carte">
+                    <div class="card-body">
+                        <h5 class="card-title">Salade Cesar</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-start mb-5">
+                <div class="card zoom-image">
+                    <img src="../image/food/pizza-margherita.jpg" class="card-img-top card-img" alt="Image de la carte">
+                    <div class="card-body">
+                        <h5 class="card-title">Margherita</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script> <!-- CDN JQUERY -->
@@ -59,19 +149,22 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script> <!-- CDN BOOTSTRAP/JS -->
 
-    <footer class="mt-5">
-        <div class="container-fluid foot fixed-bottom d-none d-md-flex">
+    <footer class="mt-5 w-100 d-none d-md-flex">
+        <div class="container-fluid foot fixed-bottom w-75 mt-5">
             <!-- Contenu de votre footer -->
-            <div class="d-flex justify-content-center align-items-center">
-                <a class="mx-3 mx-md-5 mod-rs"><i class="fa-brands fa-instagram fa-fade"></i></a>
-                <a class="mx-3 mx-md-5 mod-rs"><i class="fa-brands fa-pinterest fa-fade"></i></a>
-                <a class="mx-3 mx-md-5 mod-rs"><i class="fa-brands fa-twitter fa-fade"></i></a>
-                <a class="mx-3 mx-md-5 mod-rs"><i class="fa-brands fa-linkedin fa-fade"></i></a>
-                <a class="mx-3 mx-md-5 mod-rs"><i class="fa-brands fa-facebook fa-fade"></i></a>
-                <a class="mx-3 mx-md-5 mod-rs"><i class="fa-brands fa-youtube fa-fade"></i></a>
+            <div class="d-flex justify-content-between align-items-center">
+                <!-- Ajout de la classe justify-content-between -->
+                <a class="mod-rs"><i class="fa-brands fa-instagram fa-fade"></i></a>
+                <a class="mod-rs"><i class="fa-brands fa-pinterest fa-fade"></i></a>
+                <a class="mod-rs"><i class="fa-brands fa-twitter fa-fade"></i></a>
+                <a class="mod-rs"><i class="fa-brands fa-linkedin fa-fade"></i></a>
+                <a class="mod-rs"><i class="fa-brands fa-facebook fa-fade"></i></a>
+                <a class="mod-rs"><i class="fa-brands fa-youtube fa-fade"></i></a>
             </div>
         </div>
     </footer>
 </body>
+
+
 
 </html>

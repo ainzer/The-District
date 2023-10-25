@@ -45,7 +45,6 @@
     align-items: center !important;
 }
 .foot {
-    width: 1200px !important;
     background-color: #970747 !important;
     border-radius: 15px !important;
     border: 3px solid !important;
@@ -61,11 +60,38 @@
 .col-btn:hover {
     color: #FEF4E8 !important;
 }
-body {
+/* body {
+    background-color: #970747 !important;
+} */
+.mod-video {
+    border: 3px solid #FEF4E8 !important;
     background-color: #970747 !important;
 }
-
-
+.card {
+    border: 3px solid #FEF4E8 !important;
+    background-color: #970747 !important;
+    width: 205px !important;
+    color: #FEF4E8 !important;
+    text-align: center !important;
+}
+.card-img {
+    height: 200px !important;
+    width: 200px !important;
+}
+  /* Ajouter un effet de zoom aux images au survol */
+  .zoom-image {
+    transition: transform 0.2s !important;
+  }
+  
+  .zoom-image:hover {
+    transform: scale(1.1) !important;
+  }
+  .dark-theme {
+    background-color: #1a1a1a; /* Couleur de fond sombre */
+    color: #ffffff; /* Couleur du texte */
+  }
+  
+  
 
 
 
