@@ -70,13 +70,13 @@
 .card {
     border: 3px solid #FEF4E8 !important;
     background-color: #970747 !important;
-    width: 205px !important;
+    width: 305px !important;
     color: #FEF4E8 !important;
     text-align: center !important;
 }
 .card-img {
     height: 200px !important;
-    width: 200px !important;
+    width: 300px !important;
 }
   /* Ajouter un effet de zoom aux images au survol */
   .zoom-image {
