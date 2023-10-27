@@ -28,7 +28,7 @@
       "id_categorie": 11,
       "libelle": "Sandwich",
       "image": "sandwich_cat.jpg",
-      "active": "Yes"
+      "active": "No"
     },
     {
       "id_categorie": 12,
@@ -40,7 +40,7 @@
       "id_categorie": 13,
       "libelle": "Salade",
       "image": "salade_cat.jpg",
-      "active": "YES"
+      "active": "Yes"
     },
     {
       "id_categorie": 14,
