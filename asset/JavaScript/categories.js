@@ -7,7 +7,6 @@ $.getJSON("../asset/the_district.json", function (data) {
   // Boucle à travers les catégories
   categories.forEach(function (category) {
 
-    console.log(category);
     // Créer une nouvelle carte de catégorie
     var newCard = $("<div class='col-md-4 d-flex justify-content-center justify-content-md-between mb-4'>" +
       "<div class='card zoom-image'>" +
