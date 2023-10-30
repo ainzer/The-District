@@ -33,7 +33,7 @@ $.getJSON("../asset/the_district.json", function (data) {
     newCard.on('click', function () {
 
       // Spécifier l'URL de la page vers laquelle tu veux rediriger avec l'ID de la catégorie
-      var nouvellePage = 'categorie.html?id=' + category.id_categorie;
+      var nouvellePage = 'platCategorie.html?id=' + category.id_categorie;
 
       // Rediriger l'utilisateur vers la nouvelle page
       window.location.href = nouvellePage;
