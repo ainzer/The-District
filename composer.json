@@ -1,0 +1,17 @@
+{
+    "name": "tony/the-district",
+    "autoload": {
+        "psr-4": {
+            "Tony\\TheDistrict\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tony",
+            "email": "127862337+ainzer@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.8"
+    }
+}
