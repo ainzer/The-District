@@ -1,39 +1,38 @@
 $(document).ready(function () {
-    // Fonction pour charger le fichier JSON et gérer la recherche
     function loadAndSearch() {
         $.getJSON("../asset/the_district.json", function (data) {
-            // Fonction pour gérer la recherche
             function handleSearch(input) {
-                // Filtrer les plats qui correspondent à la saisie de l'utilisateur
-                var matchingPlats = data.plat.filter(function (plat) {
-                    return plat.libelle.toLowerCase().includes(input.toLowerCase());
+                var matchingCategories = data.categorie.filter(function (categorie) {
+                    return categorie.libelle.toLowerCase().includes(input.toLowerCase());
                 });
-                
-                // Mettre à jour la liste des suggestions visuelles
-                updateSearchResults(matchingPlats);
+
+                // Mettre à jour la liste des suggestions visuelles et activer l'autocomplétion
+                updateSearchResults(matchingCategories);
             }
-            
-            // Fonction pour mettre à jour la liste des suggestions visuelles
+
             function updateSearchResults(results) {
-                var resultsContainer = $("#searchResults");
-                resultsContainer.empty(); // Efface les résultats précédents
-
-                // Ajoute les nouveaux résultats à la liste
-                results.forEach(function (plat) {
-                    var resultItem = $("<div>").text(plat.libelle);
-                    resultsContainer.append(resultItem);
+                $("#searchInput").autocomplete({
+                    source: results.map(function (categorie) {
+                        return categorie.libelle;
+                    }),
+                    select: function (event, ui) {
+                        // Gérer la sélection d'une catégorie
+                        var selectedCategorie = data.categorie.find(function (categorie) {
+                            return categorie.libelle === ui.item.label;
+                        });
+                        // Faire quelque chose avec la catégorie sélectionnée, par exemple, rediriger vers sa page
+                        window.location.href = "platCategorie.html?id=" + selectedCategorie.id_categorie;
+                    },
                 });
             }
 
-            // Écouteur d'événements pour la saisie dans la barre de recherche
             var searchInput = $("#searchInput");
-            searchInput.on('input', function () {
+            searchInput.on("input", function () {
                 var inputValue = searchInput.val();
                 handleSearch(inputValue);
             });
         });
     }
 
-    // Appelle la fonction pour charger le fichier JSON et initialiser la recherche
     loadAndSearch();
 });
