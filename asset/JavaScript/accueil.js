@@ -1,7 +1,7 @@
 $(document).ready(function () {
     function loadAndSearch() {
         $.getJSON("../asset/the_district.json", function (data) {
-            function handleSearch(input) {
+            function performSearch(input) {
                 var matchingCategories = data.categorie.filter(function (categorie) {
                     return categorie.libelle.toLowerCase().includes(input.toLowerCase());
                 });
@@ -26,10 +26,22 @@ $(document).ready(function () {
                 });
             }
 
-            var searchInput = $("#searchInput");
-            searchInput.on("input", function () {
-                var inputValue = searchInput.val();
-                handleSearch(inputValue);
+            $("#searchButton").on("click", function () {
+                var inputValue = $("#searchInput").val();
+                performSearch(inputValue);
+            });
+
+/*           $("#searchInput").on("input", function () {
+                var inputValue = $(this).val();
+                performSearch(inputValue);
+            }); */
+
+            $("#searchInput").on("keypress", function (e) {
+                // Détecter la pression de la touche "Entrée" (code 13)
+                if (e.which === 13) {
+                    var inputValue = $(this).val();
+                    performSearch(inputValue);
+                }
             });
         });
     }
