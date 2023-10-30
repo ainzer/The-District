@@ -8,11 +8,11 @@ $(document).ready(function () {
                 var matchingPlats = data.plat.filter(function (plat) {
                     return plat.libelle.toLowerCase().includes(input.toLowerCase());
                 });
-
+                
                 // Mettre à jour la liste des suggestions visuelles
                 updateSearchResults(matchingPlats);
             }
-
+            
             // Fonction pour mettre à jour la liste des suggestions visuelles
             function updateSearchResults(results) {
                 var resultsContainer = $("#searchResults");
