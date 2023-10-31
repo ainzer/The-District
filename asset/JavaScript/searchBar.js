@@ -21,26 +21,38 @@ $(document).ready(function () {
                             return categorie.libelle === ui.item.label;
                         });
                         // Faire quelque chose avec la catégorie sélectionnée, par exemple, rediriger vers sa page
+                        console.log("Sélection via Autocomplete");
                         window.location.href = "platCategorie.html?id=" + selectedCategorie.id_categorie;
                     },
                 });
             }
 
-            $("#searchButton").on("click", function () {
+            $("#searchButton").on("click", function (e) {
+                e.preventDefault(); // Empêcher le formulaire de se soumettre normalement
                 var inputValue = $("#searchInput").val();
                 performSearch(inputValue);
+                console.log("Clic sur le bouton Rechercher");
+                // Rediriger vers la page de catégorie ici si nécessaire
+                var selectedCategorie = data.categorie.find(function (categorie) {
+                    return categorie.libelle.toLowerCase() === $("#searchInput").val().toLowerCase();
+                });
+                console.log(selectedCategorie);
+                window.location.href = "platCategorie.html?id=" + selectedCategorie.id_categorie;
             });
-
-/*           $("#searchInput").on("input", function () {
-                var inputValue = $(this).val();
-                performSearch(inputValue);
-            }); */
 
             $("#searchInput").on("keypress", function (e) {
                 // Détecter la pression de la touche "Entrée" (code 13)
                 if (e.which === 13) {
+                    e.preventDefault(); // Empêcher le formulaire de se soumettre normalement
                     var inputValue = $(this).val();
                     performSearch(inputValue);
+                    console.log("Touche Entrée pressée");
+                    // Rediriger vers la page de catégorie ici si nécessaire
+                    var selectedCategorie = data.categorie.find(function (categorie) {
+                        return categorie.libelle.toLowerCase() === $("#searchInput").val().toLowerCase();
+                    });
+                    console.log(selectedCategorie);
+                    window.location.href = "platCategorie.html?id=" + selectedCategorie.id_categorie;
                 }
             });
         });
