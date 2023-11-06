@@ -11,8 +11,10 @@
     </div>
 </div>
 
-<div class="container mt-2">
-    <div class="row" id="cartesCategories"></div>
+
+<div class="container mt-4">
+    <div class="row" id="cartesPlats"></div>
 </div>
+
 
 <?php include 'footer.php'; ?>
