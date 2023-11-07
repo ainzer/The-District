@@ -64,7 +64,7 @@
     margin: 0;
     padding: 0;
     background-color: #1a1a1a; /* Couleur sombre pour le fond */
-    background: url('../image/bg.jpg'); /* Chemin vers ton image de fond */
+    /* background: url('../image/bg.jpg'); Chemin vers ton image de fond */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
