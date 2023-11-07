@@ -11,8 +11,23 @@ $(document).ready(function () {
         loadCategoryPlats();
         loadPlats();
         loadSelectedPlat();
+        markActivePage();
         // Ajoute d'autres fonctions si nécessaire
     });
+
+    // Fonction pour marquer la page active dans la barre de navigation
+    function markActivePage() {
+        var currentPage = window.location.pathname.split("/").pop(); // Obtient le nom de la page à partir de l'URL
+        var navLinks = $(".navbar-nav .nav-item a");
+
+        navLinks.each(function () {
+            var linkPage = $(this).attr("href");
+
+            if (linkPage === currentPage) {
+                $(this).parent().addClass("active");
+            }
+        });
+    }
 
     function loadAndSearch() {
         function performSearch(input) {

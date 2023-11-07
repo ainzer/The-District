@@ -4,6 +4,7 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
 <script src="../asset/JavaScript/script.js"></script>
 
+
 <footer class="mt-5 w-100 d-none d-md-flex">
     <div class="container-fluid foot fixed-bottom w-75 mt-5">
         <!-- Contenu de votre footer -->

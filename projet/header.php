@@ -16,7 +16,7 @@
     <title>The District</title>
 </head>
 
-<body class="dark-theme">
+<body class="dark-theme-perso parallax-bg">
     <header>
         <nav class="navbar navbar-expand-lg bg-custom-color">
             <a class="navbar-brand color-title no-hover-color-change fs-1">
@@ -29,7 +29,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link color-heading fs-2" href="accueil.php">Accueil</a>
                     </li>
                     <li class="nav-item">

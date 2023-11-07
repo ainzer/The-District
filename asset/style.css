@@ -60,9 +60,25 @@
 .col-btn:hover {
     color: #FEF4E8 !important;
 }
-/* body {
-    background-color: #970747 !important;
-} */
+ body.dark-theme-perso {
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    height: 100vh;
+   /*  overflow: hidden; */
+ }
+
+ .dark-theme-perso .parallax-bg::before {
+    content: "";
+    background: inherit;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+ }
+
 .mod-video {
     border: 3px solid #FEF4E8 !important;
     background-color: #970747 !important;
@@ -107,7 +123,6 @@
     color: #FEF4E8;
     border-color: #FEF4E8;
   }
-
   
   
 
