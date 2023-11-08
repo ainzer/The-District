@@ -1,22 +1,34 @@
 <?php
+// Vérification si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nom = $_POST["nom"];
-    $prenom = $_POST["prenom"];
-    $email = $_POST["email"];
-    $telephone = $_POST["telephone"];
-    $demande = $_POST["demande"];
+    // Récupération des données du formulaire
+    $nom = ($_POST["nom"]);
+    $prenom = ($_POST["prenom"]);
+    $email = ($_POST["email"]);
+    $telephone = ($_POST["telephone"]);
+    $demande = ($_POST["demande"]);
 
-    // Créer le nom du fichier avec le format AAAA-MM-JJ-HH-MM-SS.txt
-    $filename = date("Y-m-d-H-i-s") . ".txt";
+    // Création du nom de fichier avec la date et l'heure
+    $nomFichier = "contact/" . date("Y-m-d-H-i-s") . ".txt";
 
-    // Concaténer les données dans une chaîne
-    $data = "Nom: $nom\nPrénom: $prenom\nEmail: $email\nTéléphone: $telephone\nDemande: $demande\n";
+    // Ouverture du fichier en écriture
+    $fichier = fopen($nomFichier, "w");
 
-    // Enregistrer les données dans le fichier
-    file_put_contents($filename, $data);
+    // Écriture des données dans le fichier
+    fwrite($fichier, "Nom: $nom\n");
+    fwrite($fichier, "Prénom: $prenom\n");
+    fwrite($fichier, "Email: $email\n");
+    fwrite($fichier, "Téléphone: $telephone\n");
+    fwrite($fichier, "Demande: $demande\n");
 
-    echo "Formulaire soumis avec succès!";
+    // Fermeture du fichier
+    fclose($fichier);
+
+    // Affichage d'un message de confirmation
+    header("Location: merci.php");
 } else {
-    echo "Une erreur s'est produite lors de la soumission du formulaire.";
+    // Redirection si le formulaire n'a pas été soumis
+    header("Location: accueil.php");
+    exit();
 }
 ?>

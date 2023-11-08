@@ -195,7 +195,7 @@ $(document).ready(function () {
     }
 
     $("#contactForm").submit(function (event) {
-        event.preventDefault();
+        // event.preventDefault();
 
         if (validateContactForm()) {
             var contactFormData = {
@@ -206,10 +206,10 @@ $(document).ready(function () {
                 demande: $("#demande").val()
             };
 
-            alert("Formulaire de contact soumis avec succès. Données : " + JSON.stringify(contactFormData));
+            // alert("Formulaire de contact soumis avec succès. Données : " + JSON.stringify(contactFormData));
             // Ajoute ici le code pour envoyer les données du formulaire de contact (contactFormData) à ton serveur PHP si nécessaire.
         } else {
-            alert("Le formulaire de contact n'est pas valide.");
+            // alert("Le formulaire de contact n'est pas valide.");
         }
     });
 
