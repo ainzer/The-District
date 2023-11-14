@@ -6,7 +6,7 @@
 
 
 <footer class="mt-5 w-100 d-none d-md-flex">
-    <div class="container-fluid foot fixed-bottom w-75 mt-5">
+    <div class="container-fluid foot w-75 mt-5">
         <!-- Contenu de votre footer -->
         <div class="d-flex justify-content-between align-items-center">
             <!-- Ajout de la classe justify-content-between -->

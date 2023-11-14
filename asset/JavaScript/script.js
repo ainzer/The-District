@@ -1,5 +1,7 @@
 $(document).ready(function () {
     var jsonData; // Variable pour stocker les données JSON une fois chargées
+    var currentPage = 1; // Variable pour suivre la page actuelle
+    var categoriesPerPage = 6; // Nombre de catégories à afficher par page
 
     // Charger le fichier JSON une seule fois
     $.getJSON("../asset/the_district.json", function (data) {
@@ -7,7 +9,7 @@ $(document).ready(function () {
 
         // Appeler les différentes fonctions ou sections de code maintenant que les données sont chargées
         loadAndSearch();
-        loadCategories();
+        loadCategories(currentPage); // Charger les catégories de la première page
         loadCategoryPlats();
         loadPlats();
         loadSelectedPlat();
@@ -33,6 +35,32 @@ $(document).ready(function () {
         function performSearch(input) {
             var matchingCategories = jsonData.categorie.filter(function (categorie) {
                 return categorie.libelle.toLowerCase().includes(input.toLowerCase());
+            });
+
+            categories.forEach(function (category) {
+                var newCard = $("<div class='col-md-4 d-flex justify-content-center justify-content-md-between mb-4'>" +
+                    "<div class='card zoom-image'>" +
+                    "<img src='../image/category/" + category.image + "' class='categories-img-top card-img' alt='Image de la carte'>" +
+                    "<div class='card-body'>" +
+                    "<h5 class='categories-title'>" + category.libelle + "</h5>" +
+                    "<span class='badge rounded-pill'></span>" +
+                    "</div>" +
+                    "</div>" +
+                    "</div>");
+
+                categoryContainer.append(newCard);
+
+                var badgeElement = newCard.find(".badge");
+                badgeElement.text(category.active === 'Yes' ? 'Yes' : 'No');
+                badgeElement.removeClass('text-bg-success text-bg-danger');
+                badgeElement.addClass(category.active === 'Yes' ? 'text-bg-success' : 'text-bg-danger');
+
+                if (category.active === 'Yes') {
+                    newCard.on('click', function () {
+                        var nouvellePage = 'platCategorie.php?id=' + category.id_categorie;
+                        window.location.href = nouvellePage;
+                    });
+                }
             });
 
             updateSearchResults(matchingCategories);
@@ -76,11 +104,21 @@ $(document).ready(function () {
         });
     }
 
-    function loadCategories() {
+    // Fonction pour charger les catégories avec pagination
+    function loadCategories(currentPage) {
         var categories = jsonData.categorie;
         var categoryContainer = $("#cartesCategories");
 
-        categories.forEach(function (category) {
+        // Calculer l'index de départ pour la pagination
+        var startIndex = (currentPage - 1) * categoriesPerPage;
+        // Calculer l'index de fin pour la pagination
+        var endIndex = startIndex + categoriesPerPage;
+        // Limiter le nombre de catégories à afficher à la plage actuelle
+        var categoriesToShow = categories.slice(startIndex, endIndex);
+
+        categoryContainer.empty(); // Vider le conteneur des catégories
+
+        categoriesToShow.forEach(function (category) {
             var newCard = $("<div class='col-md-4 d-flex justify-content-center justify-content-md-between mb-4'>" +
                 "<div class='card zoom-image'>" +
                 "<img src='../image/category/" + category.image + "' class='categories-img-top card-img' alt='Image de la carte'>" +
@@ -99,11 +137,46 @@ $(document).ready(function () {
             badgeElement.addClass(category.active === 'Yes' ? 'text-bg-success' : 'text-bg-danger');
 
             if (category.active === 'Yes') {
-                newCard.on('click', function () {
-                    var nouvellePage = 'platCategorie.php?id=' + category.id_categorie;
-                    window.location.href = nouvellePage;
-                });
+                (function (category) {
+                    newCard.on('click', function () {
+                        var nouvellePage = 'platCategorie.php?id=' + category.id_categorie;
+                        window.location.href = nouvellePage;
+                    });
+                })(category);
             }
+        });
+
+        var totalPage = Math.ceil(categories.length / categoriesPerPage);
+
+        // Gestionnaire d'événements pour le bouton "Suivant"
+        $("#suivantButton").on("click", function () {
+            // alert("Page en cours avant incrément : "+currentPage);
+            currentPage++; // Incrémenter le numéro de page
+            // alert("Page après incrément : "+currentPage);
+            loadCategories(currentPage); // Charger les catégories de la page suivante
+
+            // Désactiver le bouton "Suivant" si on est sur la dernière page
+            if (currentPage === totalPage) {
+                $(this).prop("disabled", true);
+            }
+
+            // Activer le bouton "Précédent" après avoir cliqué sur "Suivant"
+            $("#precedentButton").prop("disabled", false);
+        });
+
+        // Gestionnaire d'événements pour le bouton "Précédent"
+        $("#precedentButton").on("click", function () {
+            // alert("Page en cours avant décrément : "+currentPage);
+            currentPage=currentPage-1; // Décrémenter le numéro de page
+            // alert("Page après décrément : "+currentPage);
+            loadCategories(currentPage); // Charger les catégories de la page précédente
+
+            // Désactiver le bouton "Précédent" si on est sur la première page
+            if (currentPage === 1) {
+                $(this).prop("disabled", true);
+                // Activer le bouton "Suivant" après avoir cliqué sur "Précédent"
+                $("#suivantButton").prop("disabled", false);
+            } 
         });
     }
 
@@ -136,11 +209,17 @@ $(document).ready(function () {
         }
     }
 
+    // Fonction pour charger tous les plats
     function loadPlats() {
         var plats = jsonData.plat;
         var platContainer = $("#cartesPlats");
 
-        plats.forEach(function (plat) {
+        // Limiter le nombre de plats à afficher à 6
+        var numPlatsToShow = Math.min(plats.length, 6);
+
+        for (var i = 0; i < numPlatsToShow; i++) {
+            var plat = plats[i];
+
             var platCard = $("<div class='col-md-4 d-flex justify-content-center justify-content-md-end mb-5'>" +
                 "<div class='card zoom-image'>" +
                 "<img src='../image/food/" + plat.image + "' class='plat-img-top card-img' alt='Image du plat'>" +
@@ -154,7 +233,7 @@ $(document).ready(function () {
                 "</div>");
 
             platContainer.append(platCard);
-        });
+        }
 
         $(".btn-commande").on("click", function () {
             var platId = $(this).data("id");
@@ -176,9 +255,10 @@ $(document).ready(function () {
             $("#selectedPlatDescription").text(plat.description);
             $("#selectedPlatPrice").text("Prix: " + plat.prix + "€");
         } else {
-           console.log("Plat non trouvé.");
+            console.log("Plat non trouvé.");
         }
     }
+
     function validateContactForm() {
         var nom = $("#nom").val();
         var prenom = $("#prenom").val();
