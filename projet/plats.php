@@ -14,6 +14,10 @@
 
 <div class="container mt-4">
     <div class="row" id="cartesPlats"></div>
+    <div class="d-flex justify-content-between">
+        <input type="button" id="precedentPlatsButton" class="btn btn-primary mt-2 btn-mod" value="Précédent" disabled>
+        <input type="button" id="suivantPlatsButton" class="btn btn-primary mt-2 btn-mod" value="Suivant">
+    </div>
 </div>
 
 

@@ -1,6 +1,7 @@
 $(document).ready(function () {
     var jsonData; // Variable pour stocker les données JSON une fois chargées
     var currentPage = 1; // Variable pour suivre la page actuelle
+    var currentPagePlats = 1; // Variable pour suivre la page actuelle des plats
     var categoriesPerPage = 6; // Nombre de catégories à afficher par page
 
     // Charger le fichier JSON une seule fois
@@ -11,7 +12,7 @@ $(document).ready(function () {
         loadAndSearch();
         loadCategories(currentPage); // Charger les catégories de la première page
         loadCategoryPlats();
-        loadPlats();
+        loadPlats(currentPagePlats); // Charger les plats de la première page
         loadSelectedPlat();
         markActivePage();
         // Ajoute d'autres fonctions si nécessaire
@@ -167,7 +168,7 @@ $(document).ready(function () {
         // Gestionnaire d'événements pour le bouton "Précédent"
         $("#precedentButton").on("click", function () {
             // alert("Page en cours avant décrément : "+currentPage);
-            currentPage=currentPage-1; // Décrémenter le numéro de page
+            currentPage = currentPage - 1; // Décrémenter le numéro de page
             // alert("Page après décrément : "+currentPage);
             loadCategories(currentPage); // Charger les catégories de la page précédente
 
@@ -176,7 +177,7 @@ $(document).ready(function () {
                 $(this).prop("disabled", true);
                 // Activer le bouton "Suivant" après avoir cliqué sur "Précédent"
                 $("#suivantButton").prop("disabled", false);
-            } 
+            }
         });
     }
 
@@ -210,15 +211,20 @@ $(document).ready(function () {
     }
 
     // Fonction pour charger tous les plats
-    function loadPlats() {
+    function loadPlats(currentPagePlats) {
         var plats = jsonData.plat;
         var platContainer = $("#cartesPlats");
 
-        // Limiter le nombre de plats à afficher à 6
-        var numPlatsToShow = Math.min(plats.length, 6);
+        // Calculer l'index de départ pour la pagination des plats
+        var startIndex = (currentPagePlats - 1) * categoriesPerPage;
+        // Calculer l'index de fin pour la pagination des plats
+        var endIndex = startIndex + categoriesPerPage;
+        // Limiter le nombre de plats à afficher à la plage actuelle
+        var platsToShow = plats.slice(startIndex, endIndex);
 
-        for (var i = 0; i < numPlatsToShow; i++) {
-            var plat = plats[i];
+        platContainer.empty(); // Vider le conteneur des plats
+
+        platsToShow.forEach(function (plat) {
 
             var platCard = $("<div class='col-md-4 d-flex justify-content-center justify-content-md-end mb-5'>" +
                 "<div class='card zoom-image'>" +
@@ -233,11 +239,37 @@ $(document).ready(function () {
                 "</div>");
 
             platContainer.append(platCard);
-        }
+        });
+        
+        // Calculer le nombre total de pages pour les plats
+        var totalPagePlats = Math.ceil(plats.length / categoriesPerPage);
 
-        $(".btn-commande").on("click", function () {
-            var platId = $(this).data("id");
-            window.location.href = "commande.php?id=" + platId;
+        // Gestionnaire d'événements pour le bouton "Suivant" dans loadPlats
+        $("#suivantPlatsButton").on("click", function () {
+            currentPagePlats++; // Incrémenter le numéro de page
+            loadPlats(currentPagePlats); // Charger les plats de la page suivante
+
+            // Désactiver le bouton "Suivant" si on est sur la dernière page
+            if (currentPagePlats === totalPagePlats) {
+                $(this).prop("disabled", true);
+            }
+
+            // Activer le bouton "Précédent" après avoir cliqué sur "Suivant"
+            $("#precedentPlatsButton").prop("disabled", false);
+        });
+
+        // Gestionnaire d'événements pour le bouton "Précédent" dans loadPlats
+        $("#precedentPlatsButton").on("click", function () {
+            currentPagePlats--; // Décrémenter le numéro de page
+            loadPlats(currentPagePlats); // Charger les plats de la page précédente
+
+            // Désactiver le bouton "Précédent" si on est sur la première page
+            if (currentPagePlats === 1) {
+                $(this).prop("disabled", true);
+            }
+
+            // Activer le bouton "Suivant" après avoir cliqué sur "Précédent"
+            $("#suivantPlatsButton").prop("disabled", false);
         });
     }
 
