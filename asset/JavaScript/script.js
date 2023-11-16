@@ -240,7 +240,7 @@ $(document).ready(function () {
 
             platContainer.append(platCard);
         });
-        
+
         // Calculer le nombre total de pages pour les plats
         var totalPagePlats = Math.ceil(plats.length / categoriesPerPage);
 

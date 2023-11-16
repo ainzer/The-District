@@ -1,17 +1,23 @@
 <?php include 'header.php'; ?>
 
 
-    <div class="container-fluid mt-2 mod-video">
-        <div class="row">
-            <div class="col-md-12">
-                <!-- Ajout d'une div pour la vidéo -->
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="URL_DE_TA_VIDEO" allowfullscreen></iframe>
-                </div>
+<div class="container-fluid mt-2  d-flex align-items-center justify-content-center">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Ajout d'une div pour la vidéo -->
+            <div style="width: 800px; height: 400px; margin: auto;">
+                <iframe id="videoFrame" style="width: 100%; height: 100%;" src="../video/video (2160p).mp4" allowfullscreen autoplay></iframe>
             </div>
         </div>
     </div>
+</div>
 
+
+
+
+
+
+<div class="parallax">
     <!-- Nouveau conteneur avec une grille de 3x3 -->
     <div class="container-fluid mt-3 row">
         <div class="col-md-4 d-flex justify-content-center justify-content-md-end mb-4">
@@ -87,5 +93,7 @@
             </div>
         </div>
     </div>
+</div>
 
-    <?php include 'footer.php'; ?>
+
+<?php include 'footer.php'; ?>

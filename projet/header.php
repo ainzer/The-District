@@ -16,7 +16,7 @@
     <title>The District</title>
 </head>
 
-<body class="dark-theme-perso parallax-bg">
+<body class="dark-theme">
     <header>
         <nav class="navbar navbar-expand-lg bg-custom-color">
             <a class="navbar-brand color-title no-hover-color-change fs-1">

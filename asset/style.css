@@ -60,29 +60,28 @@
 .col-btn:hover {
     color: #FEF4E8 !important;
 }
- body.dark-theme-perso {
+ /* .parallax {
     margin: 0;
     padding: 0;
-    background-color: #1a1a1a; /* Couleur sombre pour le fond */
-    /* background: url('../image/bg.jpg'); Chemin vers ton image de fond */
+    background: url('../image/bg.jpg'); Chemin vers ton image de fond
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     height: 100vh;
-   /*  overflow: hidden; */
- }
+    overflow: hidden;
+ } */
 
- .dark-theme-perso .parallax-bg::before {
+ /* .parallax .parallax-bg::before {
     content: "";
-    background: url('../image/bg.jpg'); /* Chemin vers ton image avec opacité */ 
+    background: url('../image/bg.jpg'); Chemin vers ton image avec opacité 
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-    opacity: 0.3; /* Ajuste l'opacité selon tes besoins, 0.5 représente 50% d'opacité */
- }
+    opacity: 0.3; Ajuste l'opacité selon tes besoins, 0.5 représente 50% d'opacité
+ } */
 
 .mod-video {
     border: 3px solid #FEF4E8 !important;
