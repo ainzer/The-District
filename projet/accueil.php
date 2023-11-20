@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <!-- Ajout d'une div pour la vidéo -->
             <div style="width: 800px; height: 400px; margin: auto;">
-                <iframe id="videoFrame" style="width: 100%; height: 100%;" src="../video/video (2160p).mp4" allowfullscreen autoplay></iframe>
+                <video id="videoFrame" style="width: 100%; height: 100%;" src="../video/video (2160p).mp4"  autoplay muted loop></video>
             </div>
         </div>
     </div>
@@ -17,7 +17,7 @@
         <div class="col-12">
             <!-- Ajout d'une div pour la vidéo sur les petits écrans -->
             <div style="width: 100%; height: 200px; margin: auto;">
-                <iframe id="videoFrame" style="width: 100%; height: 100%;" src="../video/video (2160p).mp4" allowfullscreen autoplay></iframe>
+                <video id="videoFrame" style="width: 100%; height: 100%;" src="../video/video (2160p).mp4" autoplay muted control loop></video>
             </div>
         </div>
     </div>
