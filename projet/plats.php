@@ -3,9 +3,8 @@
 <div class="container-fluid mt-2 mod-video">
     <div class="row">
         <div class="col-md-12">
-            <!-- Ajout d'une div pour la vidéo -->
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="URL_DE_TA_VIDEO" allowfullscreen></iframe>
+            <div class="embed-responsive embed-responsive-16by9 text-center">
+                <img src="../image/the_district_brand/facebook_cover_photo_2.png" alt="Description de l'image" height="200">
             </div>
         </div>
     </div>
