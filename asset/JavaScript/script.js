@@ -184,11 +184,11 @@ $(document).ready(function () {
     function loadCategoryPlats() {
         var urlParams = new URLSearchParams(window.location.search);
         var categoryId = urlParams.get('id');
-
+    
         var categoryPlats = jsonData.plat.filter(function (plat) {
             return plat.id_categorie == categoryId && plat.active === "Yes";
         });
-
+    
         if (categoryPlats.length > 0) {
             categoryPlats.forEach(function (plat) {
                 var platCategoryCard = $("<div class='col-md-4 d-flex justify-content-center justify-content-md-end mb-5'>" +
@@ -202,7 +202,13 @@ $(document).ready(function () {
                     "</div>" +
                     "</div>" +
                     "</div>");
-
+    
+                platCategoryCard.find(".btn-commande").on('click', function () {
+                    var platId = $(this).data("id");
+                    var nouvellePage = 'commande.php?id=' + platId; // Remplace 'pageCommande.php' par le chemin correct de ta page de commande
+                    window.location.href = nouvellePage;
+                });
+    
                 $('#categoryContent').append(platCategoryCard);
             });
         } else {
@@ -214,18 +220,18 @@ $(document).ready(function () {
     function loadPlats(currentPagePlats) {
         var plats = jsonData.plat;
         var platContainer = $("#cartesPlats");
-
+    
         // Calculer l'index de départ pour la pagination des plats
         var startIndex = (currentPagePlats - 1) * categoriesPerPage;
         // Calculer l'index de fin pour la pagination des plats
         var endIndex = startIndex + categoriesPerPage;
         // Limiter le nombre de plats à afficher à la plage actuelle
         var platsToShow = plats.slice(startIndex, endIndex);
-
+    
         platContainer.empty(); // Vider le conteneur des plats
-
+    
         platsToShow.forEach(function (plat) {
-
+    
             var platCard = $("<div class='col-md-4 d-flex justify-content-center justify-content-md-end mb-5'>" +
                 "<div class='card zoom-image'>" +
                 "<img src='../image/food/" + plat.image + "' class='plat-img-top card-img' alt='Image du plat'>" +
@@ -237,41 +243,48 @@ $(document).ready(function () {
                 "</div>" +
                 "</div>" +
                 "</div>");
-
+    
+            platCard.find(".btn-commande").on('click', function () {
+                var platId = $(this).data("id");
+                var nouvellePage = 'commande.php?id=' + platId; // Remplace 'pageCommande.php' par le chemin correct de ta page de commande
+                window.location.href = nouvellePage;
+            });
+    
             platContainer.append(platCard);
         });
-
+    
         // Calculer le nombre total de pages pour les plats
         var totalPagePlats = Math.ceil(plats.length / categoriesPerPage);
-
+    
         // Gestionnaire d'événements pour le bouton "Suivant" dans loadPlats
         $("#suivantPlatsButton").on("click", function () {
             currentPagePlats++; // Incrémenter le numéro de page
             loadPlats(currentPagePlats); // Charger les plats de la page suivante
-
+    
             // Désactiver le bouton "Suivant" si on est sur la dernière page
             if (currentPagePlats === totalPagePlats) {
                 $(this).prop("disabled", true);
             }
-
+    
             // Activer le bouton "Précédent" après avoir cliqué sur "Suivant"
             $("#precedentPlatsButton").prop("disabled", false);
         });
-
+    
         // Gestionnaire d'événements pour le bouton "Précédent" dans loadPlats
         $("#precedentPlatsButton").on("click", function () {
             currentPagePlats--; // Décrémenter le numéro de page
             loadPlats(currentPagePlats); // Charger les plats de la page précédente
-
+    
             // Désactiver le bouton "Précédent" si on est sur la première page
             if (currentPagePlats === 1) {
                 $(this).prop("disabled", true);
             }
-
+    
             // Activer le bouton "Suivant" après avoir cliqué sur "Précédent"
             $("#suivantPlatsButton").prop("disabled", false);
         });
     }
+    
 
     function loadSelectedPlat() {
         var urlParams = new URLSearchParams(window.location.search);
